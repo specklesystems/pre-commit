@@ -1,4 +1,4 @@
-# Speckle Repo Management Templates
+# Speckle Pre-Commit Hooks
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/SpeckleSystems?style=social)](https://twitter.com/SpeckleSystems) [![Community forum users](https://img.shields.io/discourse/users?server=https%3A%2F%2Fdiscourse.speckle.works&style=flat-square&logo=discourse&logoColor=white)](https://discourse.speckle.works) [![website](https://img.shields.io/badge/https://-speckle.systems-royalblue?style=flat-square)](https://speckle.systems) [![docs](https://img.shields.io/badge/docs-speckle.guide-orange?style=flat-square&logo=read-the-docs&logoColor=white)](https://speckle.guide/dev/)
 
@@ -17,6 +17,7 @@ Comprehensive developer and user documentation for Speckle can be found in our:
 ## Usage
 
 1. Add the following to your `.pre-commit-config.yaml` file:
+
 ```
 - repo: https://github.com/specklesystems/pre-commit
     rev: '0.1.0'
@@ -27,11 +28,14 @@ Comprehensive developer and user documentation for Speckle can be found in our:
 ## Developing & Debugging
 
 1. install:
-  - `git`
-  - `pre-commit`
+
+- `git`
+- `pre-commit`
+
 1. Git clone this repository. Detailed steps on how to do that can be found on [GitHub's documentation](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls).
 1. In a terminal, `cd` into a directory containing code that you wish to try the pre-commit hook on. e.g. Speckle's `speckle-server` repository.
 1. Run the following command to run a pre-commit hook directly from this repository. Replace `<pre-commit hook to run>` with the name of the hook you wish to run:
+
 ```shell
 pre-commit try-repo ./path/to/cloned/specklesystems/pre-commit <pre-commit hook to run>
 ```
