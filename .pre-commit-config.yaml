@@ -26,14 +26,5 @@ repos:
     hooks:
       - id: validate_manifest
 
-  - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.32.2
-    hooks:
-      - id: commitizen
-      - id: commitizen-branch
-        stages:
-          - post-commit
-          - push
-
 ci:
   autoupdate_schedule: quarterly
