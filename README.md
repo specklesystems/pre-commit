@@ -4,40 +4,37 @@
 
 ## Introduction
 
-This section should hold a quick intro on what this repo's about. For example:
+This repository contains [pre-commit](https://pre-commit.com/) hooks that are maintained by the Speckle team and Speckle's amazing community. The pre-commit hooks that belong here are useful for contributing to Speckle.
 
-This repo holds Speckle's:
-
-- Default [Code of Conduct](.github/CODE_OF_CONDUCT.md),
-- Default [Contribution Guidelines](.github/CONTRIBUTING.md),
-- README template (you're reading it now),
-- Default [Issue Template](.github/ISSUE_TEMPLATE/ISSUE_TEMPLATE.md),
-- Default [Pull Request Template](.github/PULL_REQUEST_TEMPLATE/PR_TEMPLATE.md),
-- OSS License (Apache 2.0)
-
-Either copy paste the parts that are useful in existing repos, or use this as a base when creating a new repository.
+This repository is for contributor's to Speckle. If you're not a contributor (though, you should be!) and arrived here, you were probably looking for our [website](https://speckle.systems) or our [documentation](https://speckle.guide).
 
 ## Documentation
 
-Comprehensive developer and user documentation can be found in our:
+Comprehensive developer and user documentation for Speckle can be found in our:
 
 #### 📚 [Speckle Docs website](https://speckle.guide/dev/)
 
-## This Readme Template
+## Usage
 
-Is rather straightforward. It includes several default sections and one section that requires special attention.
-
-Default sections:
-
-- Badges: has several default social badges. Feel free to add more.
-- Developing & Debugging - needs filling in!
-- Community - can be left as is.
-
-**License section**: If this is a pure OSS repo, like Core, remove everything after the first phrase. Otherwise, we need to plan ahead before releasing and make sure we're covered.
+1. Add the following to your `.pre-commit-config.yaml` file:
+```
+- repo: https://github.com/specklesystems/pre-commit
+    rev: '0.1.0'
+    hooks:
+      - id: ggshield-not-ci
+```
 
 ## Developing & Debugging
 
-This doesn't make sense here, but in general, we should try to provide a small "how to" guide on local development and debugging, as it lowers the barrier to contributions.
+1. install:
+  - `git`
+  - `pre-commit`
+1. Git clone this repository. Detailed steps on how to do that can be found on [GitHub's documentation](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls).
+1. In a terminal, `cd` into a directory containing code that you wish to try the pre-commit hook on. e.g. Speckle's `speckle-server` repository.
+1. Run the following command to run a pre-commit hook directly from this repository. Replace `<pre-commit hook to run>` with the name of the hook you wish to run:
+```shell
+pre-commit try-repo ./path/to/cloned/specklesystems/pre-commit <pre-commit hook to run>
+```
 
 ## Contributing
 
