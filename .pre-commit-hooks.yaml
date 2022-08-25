@@ -1,0 +1,6 @@
+- id: ggshield-not-ci
+  name: GitGuardian Shield (pre-commit)
+  description: Runs ggshield in non-CI environments to detect hardcoded secrets, security vulnerabilities and policy breaks.
+  stages: [commit]
+  entry: hooks/ggshield-not-ci.sh
+  language: script
