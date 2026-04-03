@@ -1,0 +1,37 @@
+name: Release pipeline
+
+on:
+  push:
+    branches:
+      - '**' # all branches
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+permissions: {} # purposefully empty by default at workflow level, explicitly overridden for specific jobs below
+
+jobs:
+  pre-commit:
+    name: Precommit check
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    permissions:
+      contents: read
+      packages: read # to be able to pull the pre-commit-runner image from ghcr.io
+    container:
+      image: ghcr.io/specklesystems/pre-commit-runner:latest # zizmor: ignore[unpinned-images] Speckle own this image repository
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: git config --global --add safe.directory $PWD
+      - name: Set precommit
+        run: pre-commit install-hooks --config ./.pre-commit-config.yaml
+      - name: Run precommit
+        run: pre-commit run --all-files --config ./.pre-commit-config.yaml
+      - name: Diff on failure
+        if: failure()
+        run: git --no-pager diff
